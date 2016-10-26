@@ -3,4 +3,5 @@
  */
 
 public class abcdefg {
+    int a;
 }
