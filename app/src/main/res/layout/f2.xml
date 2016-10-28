@@ -3,8 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <listview android:id="@+id/lv" android:layout_height="match_parent" android:layout_width="match_parent">
-    </listview>
-
+    <ListView android:id="@+id/lv" android:layout_height="match_parent" android:layout_width="match_parent">
+    </ListView>
 
 </LinearLayout>
