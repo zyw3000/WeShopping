@@ -1,4 +1,4 @@
-package zyw.weshopping.Fragment;
+package zyw.weshopping.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,12 +11,12 @@ import zyw.weshopping.R;
 /**
  * Created by Administrator on 2016/10/24 0024.
  */
-public class FrdFragment extends Fragment {
+public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.f4, container, false);
+        return inflater.inflate(R.layout.f2, container, false);
     }
 
 

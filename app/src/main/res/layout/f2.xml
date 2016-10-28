@@ -3,13 +3,8 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:gravity="center"
-        android:text="这是资讯"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+    <listview android:id="@+id/lv" android:layout_height="match_parent" android:layout_width="match_parent">
+    </listview>
 
 
 </LinearLayout>

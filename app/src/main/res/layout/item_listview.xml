@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<relativelayout
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.loopj.android.image.smartimageview
+        android:id="@+id/iv"
+        android:layout_centerVertical="true"
+        android:layout_height="90dp"
+        android:layout_width="90dp">
+
+        <textview
+            android:id="@+id/tv_title"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:text="尝到了真人秀的甜头后,途牛又砸1.48亿在跑男上"
+            android:textSize="22sp">
+
+            <textview
+                android:id="@+id/tv_detail"
+                android:layout_below="@+id/tv_title"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/iv"
+                android:layout_width="match_parent"
+                android:lines="2"
+                android:text="昨晚第四季《奔跑吧兄弟回归》，途牛是这一季的赞助商之一。"
+                android:textColor="#aaa">
+
+                <textview
+                    android:id="@+id/tv_comment"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_detail"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="65031条评论"
+                    android:textColor="#ff0000">
+                </textview>
+            </textview>
+        </textview>
+    </com.loopj.android.image.smartimageview>
+</relativelayout>

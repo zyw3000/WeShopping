@@ -1,4 +1,4 @@
-package zyw.weshopping.Fragment;
+package zyw.weshopping.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

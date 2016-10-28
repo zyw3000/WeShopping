@@ -1,4 +1,4 @@
-package zyw.weshopping.Activity;
+package zyw.weshopping.Activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,10 +11,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import zyw.weshopping.Fragment.FrdFragment;
-import zyw.weshopping.Fragment.MarkFragment;
-import zyw.weshopping.Fragment.MenuFragment;
-import zyw.weshopping.Fragment.NewsFragment;
+import zyw.weshopping.Fragments.FrdFragment;
+import zyw.weshopping.Fragments.MarkFragment;
+import zyw.weshopping.Fragments.MenuFragment;
+import zyw.weshopping.Fragments.NewsFragment;
 import zyw.weshopping.R;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
