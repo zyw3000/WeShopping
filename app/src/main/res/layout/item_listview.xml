@@ -16,7 +16,6 @@
             android:layout_toRightOf="@+id/iv"
             android:layout_width="match_parent"
             android:singleLine="true"
-            android:text="尝到了真人秀的甜头后,途牛又砸1.48亿在跑男上"
             android:textSize="22sp">
 
             <textview
@@ -26,17 +25,15 @@
                 android:layout_toRightOf="@+id/iv"
                 android:layout_width="match_parent"
                 android:lines="2"
-                android:text="昨晚第四季《奔跑吧兄弟回归》，途牛是这一季的赞助商之一。"
                 android:textColor="#aaa">
 
                 <textview
-                    android:id="@+id/tv_comment"
+                    android:id="@+id/tv_date"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/tv_detail"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:text="65031条评论"
-                    android:textColor="#ff0000">
+                    android:textColor="#889966">
                 </textview>
             </textview>
         </textview>

@@ -1,16 +1,32 @@
 package zyw.weshopping.Activities;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Xml;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.loopj.android.image.SmartImageView;
+
+import org.xmlpull.v1.XmlPullParser;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import zyw.weshopping.Beans.News;
 import zyw.weshopping.Fragments.FrdFragment;
 import zyw.weshopping.Fragments.MarkFragment;
 import zyw.weshopping.Fragments.MenuFragment;
@@ -18,6 +34,8 @@ import zyw.weshopping.Fragments.NewsFragment;
 import zyw.weshopping.R;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
+
+    private List<News> newsList;
 
     private LinearLayout mTabMenu;
     private LinearLayout mTabNews;
@@ -45,6 +63,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         initEvent();
         setSelect(0);
+
+
 
     }
 
@@ -77,6 +97,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
             case R.id.id_tab_news:
                 setSelect(1);
+                getNewsInfo();
                 break;
             case R.id.id_tab_frd:
                 setSelect(2);
@@ -176,4 +197,146 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
+
+    Handler handler = new Handler()
+    {
+        public void handleMessage(android.os.Message msg)
+        {
+            ListView listView = (ListView) findViewById(R.id.lv);
+            listView.setAdapter(new MyAdapter());
+        }
+    };
+
+    class MyAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return newsList.size();
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+
+            View v;
+            ViewHolder mHolder;
+            if(convertView == null)
+            {
+                v = View.inflate(MainActivity.this, R.layout.item_listview, null);
+                mHolder = new ViewHolder();
+                mHolder.tv_title = (TextView) v.findViewById(R.id.tv_title);
+                mHolder.tv_detail = (TextView) v.findViewById(R.id.tv_detail);
+                mHolder.tv_comment = (TextView) v.findViewById(R.id.tv_date);
+                mHolder.siv = (SmartImageView) v.findViewById(R.id.iv);
+                v.setTag(mHolder);
+            }
+            else
+            {
+                v = convertView;
+                mHolder = (ViewHolder) v.getTag();
+            }
+            mHolder.tv_title.setText(newsList.get(position).getZx_Mame());
+            mHolder.tv_detail.setText(newsList.get(position).getZx_Content());
+            mHolder.tv_comment.setText(newsList.get(position).getZx_Date());
+            mHolder.siv.setImageUrl(newsList.get(position).getZx_Tp());
+            return v;
+        }
+
+        class ViewHolder{
+            TextView tv_title;
+            TextView tv_detail;
+            TextView tv_comment;
+            SmartImageView siv;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+    }
+
+    public void getNewsInfo() {
+        Thread t = new Thread() {
+
+            //执行子线程
+            @Override
+            public void run() {
+                String path = "http://192.168.1.101:8080/app/news.xml";
+                try {
+                    URL url = new URL(path);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setConnectTimeout(5000);
+                    conn.setReadTimeout(5000);
+                    if(conn.getResponseCode() == 200) {
+                        InputStream is = conn.getInputStream();
+                        parseNewsXml(is);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        t.start();
+    }
+
+    public void parseNewsXml(InputStream is) {
+
+        XmlPullParser xp = Xml.newPullParser();
+
+        try {
+            xp.setInput(is, "utf-8");
+            int type = xp.getEventType();
+            News news = null;
+            while (type != XmlPullParser.END_DOCUMENT) {
+
+                switch (type) {
+                    case XmlPullParser.START_TAG:
+                        if("newslist".equals(xp.getName()))
+                        {
+                            newsList = new ArrayList<News>();
+                        }
+                        else if("news".equals(xp.getName()))
+                        {
+                            news = new News();
+                        }
+                        else if("title".equals(xp.getName()))
+                        {
+                            String title = xp.nextText();
+                            news.setZx_Mame(title);
+                        }
+                        else if("detail".equals(xp.getName()))
+                        {
+                            String detail = xp.nextText();
+                            news.setZx_Content(detail);
+                        }
+                        else if("comment".equals(xp.getName()))
+                        {
+                            String comment = xp.nextText();
+                            news.setZx_Date(comment);
+                        }
+                        else if("image".equals(xp.getName()))
+                        {
+                            String image = xp.nextText();
+                            news.setZx_Tp(image);
+                        }
+                        break;
+                    case XmlPullParser.END_TAG:
+                        if("news".equals(xp.getName())){
+                            newsList.add(news);
+                        }
+                        break;
+
+                }
+                type = xp.next();
+            }
+            handler.sendEmptyMessage(1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

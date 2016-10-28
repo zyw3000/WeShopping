@@ -9,13 +9,13 @@ public class News {
     private String Zx_Date;
     private Boolean Zx_Fb;
 
-    public News(int Zx_ID,String Zx_Name,String Zx_Tp,String Zx_Content,String Zx_Date,Boolean Zx_Fb) {
-        this.Zx_ID=Zx_ID;
+    public News() {
+ /*       this.Zx_ID=Zx_ID;
         this.Zx_Mame=Zx_Name;
         this.Zx_Tp=Zx_Tp;
         this.Zx_Content=Zx_Content;
         this.Zx_Date=Zx_Date;
-        this.Zx_Fb=Zx_Fb;
+        this.Zx_Fb=Zx_Fb;*/
     }
 
     public int getZx_ID() {
