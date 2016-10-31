@@ -196,8 +196,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             transaction.hide(mf4);
         }
     }
-
-
     Handler handler = new Handler()
     {
         public void handleMessage(android.os.Message msg)
