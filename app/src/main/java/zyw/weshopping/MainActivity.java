@@ -1,5 +1,6 @@
 package zyw.weshopping;
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +11,8 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import Static.Appstatic;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
 
@@ -27,6 +30,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
 
 
+
+
     private Fragment mf1;
     private Fragment mf2;
     private Fragment mf3;
@@ -40,14 +45,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.activity_main);
 
         mfindViewById();
+        if (Appstatic.user!=null){
+            setSelect(2);
+        }else {
+            setSelect(0);
+        }
 
         shijian();
-        setSelect(0);
-
-
-
-
-
 
     }
 
@@ -56,6 +60,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mTabZixun.setOnClickListener(this);
         mTabFrd.setOnClickListener(this);
         mTabMark.setOnClickListener(this);
+
+
+
     }
 
     private void mfindViewById() {
@@ -69,7 +76,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         mImgZixun = (ImageButton) findViewById(R.id.id_zixun_img);
         mImgFrd = (ImageButton) findViewById(R.id.id_frd_img);
         mImgMark = (ImageButton) findViewById(R.id.id_mark_img);
-
     }
 
     @Override
@@ -94,6 +100,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 break;
         }
     }
+
+
+
 
     private void resetImgs() {
         mImgMenu.setImageResource(R.drawable.menu_normal);

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="13456115857"
+        android:ems="10"
+        android:id="@+id/name" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:text="19941029lz09"
+        android:id="@+id/password" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="login"
+        android:id="@+id/login_layout"/>
+
+    <TextView
+        android:id="@+id/lijizhuce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="立即注册"
+        android:textSize="20dp"/>
+
+
+</LinearLayout>
