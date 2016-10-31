@@ -225,7 +225,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 mHolder = new ViewHolder();
                 mHolder.tv_title = (TextView) v.findViewById(R.id.tv_title);
                 mHolder.tv_detail = (TextView) v.findViewById(R.id.tv_detail);
-                mHolder.tv_comment = (TextView) v.findViewById(R.id.tv_date);
+                mHolder.tv_date = (TextView) v.findViewById(R.id.tv_date);
                 mHolder.siv = (SmartImageView) v.findViewById(R.id.iv);
                 v.setTag(mHolder);
             }
@@ -236,7 +236,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             }
             mHolder.tv_title.setText(newsList.get(position).getZx_Mame());
             mHolder.tv_detail.setText(newsList.get(position).getZx_Content());
-            mHolder.tv_comment.setText(newsList.get(position).getZx_Date());
+            mHolder.tv_date.setText(newsList.get(position).getZx_Date());
             mHolder.siv.setImageUrl(newsList.get(position).getZx_Tp());
             return v;
         }
@@ -244,7 +244,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         class ViewHolder{
             TextView tv_title;
             TextView tv_detail;
-            TextView tv_comment;
+            TextView tv_date;
             SmartImageView siv;
         }
 
@@ -314,10 +314,10 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                             String detail = xp.nextText();
                             news.setZx_Content(detail);
                         }
-                        else if("comment".equals(xp.getName()))
+                        else if("date".equals(xp.getName()))
                         {
-                            String comment = xp.nextText();
-                            news.setZx_Date(comment);
+                            String date = xp.nextText();
+                            news.setZx_Date(date);
                         }
                         else if("image".equals(xp.getName()))
                         {

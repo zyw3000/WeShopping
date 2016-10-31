@@ -22,8 +22,8 @@ public class News {
         return Zx_ID;
     }
 
-    public void setZx_ID(int zx_ID) {
-        Zx_ID = zx_ID;
+    public void setZx_ID(int Zx_ID) {
+        this.Zx_ID = Zx_ID;
     }
 
     public String getZx_Mame() {
@@ -31,39 +31,39 @@ public class News {
     }
 
     public void setZx_Mame(String zx_Mame) {
-        Zx_Mame = zx_Mame;
+        this.Zx_Mame = zx_Mame;
     }
 
     public String getZx_Tp() {
         return Zx_Tp;
     }
 
-    public void setZx_Tp(String zx_Tp) {
-        Zx_Tp = zx_Tp;
+    public void setZx_Tp(String Zx_Tp) {
+        this.Zx_Tp = Zx_Tp;
     }
 
     public String getZx_Content() {
         return Zx_Content;
     }
 
-    public void setZx_Content(String zx_Content) {
-        Zx_Content = zx_Content;
+    public void setZx_Content(String Zx_Content) {
+        this.Zx_Content = Zx_Content;
     }
 
     public String getZx_Date() {
         return Zx_Date;
     }
 
-    public void setZx_Date(String zx_Date) {
-        Zx_Date = zx_Date;
+    public void setZx_Date(String Zx_Date) {
+        this.Zx_Date = Zx_Date;
     }
 
     public Boolean getZx_Fb() {
         return Zx_Fb;
     }
 
-    public void setZx_Fb(Boolean zx_Fb) {
-        Zx_Fb = zx_Fb;
+    public void setZx_Fb(Boolean Zx_Fb) {
+        this.Zx_Fb = Zx_Fb;
     }
 
     public String toString() {
